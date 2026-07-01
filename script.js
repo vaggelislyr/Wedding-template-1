@@ -1,29 +1,61 @@
 const weddingDate = new Date("2026-09-21T18:30:00").getTime();
+
+const intro = document.getElementById("intro");
+const enterBtn = document.getElementById("enterBtn");
+const music = document.getElementById("bgMusic");
 const timer = document.getElementById("timer");
 
-function updateTimer(){
-  const now = Date.now();
-  const diff = Math.max(0, weddingDate - now);
-  const d = Math.floor(diff / (1000*60*60*24));
-  const h = Math.floor((diff / (1000*60*60)) % 24);
-  const m = Math.floor((diff / (1000*60)) % 60);
-  const s = Math.floor((diff / 1000) % 60);
-  const values = [d,h,m,s].map(v => String(v).padStart(2,"0"));
-  timer.querySelectorAll("strong").forEach((el,i)=> el.textContent = values[i]);
-}
-setInterval(updateTimer,1000);
-updateTimer();
+enterBtn.addEventListener("click", async () => {
+  intro.classList.add("hide");
 
-const music = document.getElementById("music");
-document.getElementById("enterBtn").addEventListener("click", async () => {
-  try { await music.play(); } catch(e) {}
-  document.querySelector("#story").scrollIntoView({behavior:"smooth"});
+  try {
+    await music.play();
+  } catch (error) {
+    console.log("Music blocked until user interaction.");
+  }
 });
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting) entry.target.classList.add("visible");
-  });
-},{threshold:.15});
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = Math.max(0, weddingDate - now);
 
-document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((distance / (1000 * 60)) % 60);
+  const seconds = Math.floor((distance / 1000) % 60);
+
+  const values = [days, hours, minutes, seconds].map(value =>
+    String(value).padStart(2, "0")
+  );
+
+  timer.querySelectorAll("strong").forEach((item, index) => {
+    item.textContent = values[index];
+  });
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+const revealElements = document.querySelectorAll(".reveal");
+
+const revealObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  },
+  {
+    threshold: 0.16
+  }
+);
+
+revealElements.forEach(element => {
+  revealObserver.observe(element);
+});
+
+window.addEventListener("scroll", () => {
+  const scrollY = window.scrollY;
+  document.documentElement.style.setProperty("--scroll", scrollY);
+});
