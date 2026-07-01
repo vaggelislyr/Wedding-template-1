@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex & Maria Wedding</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-orbs"></div>
+  <div class="grain"></div>
+
+  <audio id="music" loop>
+    <source src="assets/music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <header class="nav">
+    <div class="brand">A & M</div>
+    <nav>
+      <a href="#story">Η ιστορία μας</a>
+      <a href="#details">Πληροφορίες</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#map">Χάρτης</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="assets/hero.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content reveal">
+        <p class="eyebrow">Wedding Invitation</p>
+        <h1>Alex<br><span>&</span><br>Maria</h1>
+        <p class="date">Σάββατο 21 Σεπτεμβρίου 2026</p>
+        <button id="enterBtn" class="primary-btn">Άνοιγμα πρόσκλησης</button>
+      </div>
+    </section>
+
+    <section class="countdown section reveal">
+      <p class="eyebrow">Μετράμε αντίστροφα</p>
+      <div id="timer" class="timer">
+        <div><strong>00</strong><span>Ημέρες</span></div>
+        <div><strong>00</strong><span>Ώρες</span></div>
+        <div><strong>00</strong><span>Λεπτά</span></div>
+        <div><strong>00</strong><span>Δευτ.</span></div>
+      </div>
+    </section>
+
+    <section id="story" class="section split reveal">
+      <div>
+        <p class="eyebrow">Where it began</p>
+        <h2>Η ιστορία μας</h2>
+        <p>
+          Κάποιες στιγμές μοιάζουν απλές όταν συμβαίνουν, αλλά μετά καταλαβαίνεις
+          πως ήταν η αρχή για όλα. Σας προσκαλούμε να γιορτάσετε μαζί μας τη μέρα
+          που ξεκινάει το επόμενο κεφάλαιο.
+        </p>
+      </div>
+      <img src="assets/photo1.jpg" alt="Couple photo" />
+    </section>
+
+    <section id="details" class="section cards reveal">
+      <div class="card">
+        <h3>Τελετή</h3>
+        <p>Ιερός Ναός Αγίου Νικολάου</p>
+        <span>18:30</span>
+      </div>
+      <div class="card">
+        <h3>Δεξίωση</h3>
+        <p>Κτήμα Ονείρων</p>
+        <span>21:00</span>
+      </div>
+      <div class="card">
+        <h3>Dress Code</h3>
+        <p>Elegant summer formal</p>
+        <span>Black / Gold</span>
+      </div>
+    </section>
+
+    <section id="gallery" class="section reveal">
+      <p class="eyebrow">Moments</p>
+      <h2>Φωτογραφίες & Βίντεο</h2>
+      <div class="gallery">
+        <img src="assets/photo1.jpg" alt="">
+        <img src="assets/photo2.jpg" alt="">
+        <video controls playsinline poster="assets/photo3.jpg">
+          <source src="assets/video1.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <section id="map" class="section reveal">
+      <p class="eyebrow">Location</p>
+      <h2>Πού θα μας βρείτε</h2>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=Athens%20Greece&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <a class="primary-btn map-btn" target="_blank" href="https://www.google.com/maps?q=Athens%20Greece">
+        Άνοιγμα στο Google Maps
+      </a>
+    </section>
+
+    <section class="section rsvp reveal">
+      <h2>Θα χαρούμε να είστε μαζί μας</h2>
+      <p>RSVP έως 01/09/2026</p>
+      <a class="primary-btn" href="mailto:example@email.com?subject=RSVP Wedding">Απάντηση RSVP</a>
+    </section>
+  </main>
+
+  <footer>
+    Made with love · Alex & Maria
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
